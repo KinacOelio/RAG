@@ -58,7 +58,7 @@ public static Thing findThingFromString(Thing[] things, String thingString){
             return things[i];}
          }
     
-    System.out.println("As far as I, This Method, am aware, that does 1not exist or is not here");
+    System.out.println("As far as I, This Method, am aware, that does not exist or is not here");
     return things[0];
 }
     
