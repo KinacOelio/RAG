@@ -6,7 +6,7 @@ import static runningawaygame.RunningAwayGame.*;
 
 public class Thing {
     private boolean stolen = false;
-     String name = "default name";
+    protected String name = "default name";
     private String sPlace = "default place";
     public Place location = places[0];
     public String desc = "default description";
@@ -26,12 +26,17 @@ public class Thing {
 if(RunningAwayGame.debug){System.out.println("thingString: " + thingString);} 
         if(thingString.contains("n>")){
          int a = thingString.indexOf("n>");
-        int b = thingString.substring(a).indexOf('\n');
+         int b = thingString.substring(a).indexOf('\n');
 if(RunningAwayGame.debug){System.out.println("thisb: " + b);}  
          String thisName = thingString.substring(a+2, b).trim();
 if(RunningAwayGame.debug){System.out.println("thisName: " + thisName);}        
          this.name = thisName;
-    } 
+    }
+ if(thingString.contains("$tr")){
+if(RunningAwayGame.debug){System.out.println("thisb: " + b);}  
+         String thisName = thingString.substring(a+2, b).trim();
+if(RunningAwayGame.debug){System.out.println("thisName: " + thisName);}        
+         this.name = thisName;
         
     }
     public String getName(){return name;}
