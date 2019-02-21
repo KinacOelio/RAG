@@ -1,0 +1,103 @@
+6
+Yes, you have to define the number of places. IDK fuck you
+actually never mind
+
+1
+[loc]
+[name] everywhere [/name]
+unknown
+k> s
+r> 00
+[desc] what? [/desc]
+
+[/loc]
+----
+
+------------
+
+2
+[loc]
+
+[name] room [/name]
+k> y
+r> 11
+[desc]
+You look around at your room. You see all of your stuff, and your pet spiders stuff.
+[/desc]
+[/loc]
+
+
+
+[loc]
+[name] yard [/name]
+k> y
+r> 13
+[desc]
+You are on a small street with only a few houses on it. You are the last house on the street. 
+To the east east is your neighbors house. A large dog sleep in their driveway. 
+The leaves are beggining to change. 
+The poplar trees to the west of your house shimmer in the light breeze.
+The walls of your house are a faded pastel yellow. 
+You won't be able to get much further than here without some sort of transportation.
+Speaking of which, you see your bike leaning against side of your house. 
+[/desc]
+[/loc]
+
+
+
+3
+[loc]
+[name] kitchen [/name]
+
+k> y
+r> 12
+
+[desc]
+This is like, the kitchen.
+Imagine your kitchen and it is this becuase you are the person who lives in the house this kitchen is contained in.
+[/desc]
+[/loc]
+----------------
+
+
+4
+[loc]
+
+[name] store [/name]
+
+k> n
+
+
+[desc]
+You see rows and rows of Blenders. 
+You sometimes like to imagine just eating food whole but haven't dared mention it to anybody.
+Hey, your mom is here!
+[/desc]
+[/loc]
+----------------
+
+
+5
+[loc]
+[name] church [/name]
+unknown
+k> n
+
+[desc]
+This place is big! and empty. It is a Tuesday after all. Church won't be for more days.
+[/desc]
+[/loc]
+--------------------------------------------------
+
+
+6
+[loc] 
+[name] fish club [/name]
+
+
+[desc]
+This is some kind of... fish club...
+[/desc]
+[/loc]
+
+END
