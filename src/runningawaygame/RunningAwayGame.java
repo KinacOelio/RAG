@@ -5,7 +5,7 @@ import java.util.*;
 
 
 
-
+//last updated 2/21 2019
 public class RunningAwayGame {
     
     public static Player Player1;
@@ -138,7 +138,7 @@ else{System.out.println("You don't have that...");}
 
 
 //END COMMANDS BLOCK
-//------------------
+//-------------
 
 
 } //END
