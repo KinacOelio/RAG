@@ -5,7 +5,7 @@ import java.util.*;
 
 
 
-//last updated 2/21 2019 8:11
+//last updated 2/22 2019
 public class RunningAwayGame {
     
     public static Player Player1;
@@ -24,14 +24,9 @@ public static boolean debug = false;
         Initialization.PlaceInit();
         Initialization.NPCInit();
         Initialization.ThingsInit();
-     
-        //INITIALIZING PLAYER.
-if(debug)System.out.println("runningawaygame.RunningAwayGame.main() /PLAYER INIT");
-        Player1 = new Player(places[1], folks, places);
-        Player1.inv.add(things[1]);
+        Initialization.playerInit();
         
-        
-        //all this shit is the while loop that actually runs the game
+      //all this shit is the while loop that actually runs the game
         boolean end = false; int n1 = 1; int n2 = 1;
        
         while(!end){String uInput = keyboard.next();{

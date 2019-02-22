@@ -64,7 +64,7 @@ public class Player {
         Thing toAdd = Utility.findThingFromString(things, StoAdd);
         if(toAdd.getName().equals("nothing")){return;}
         if(toAdd.getLoc()!=currentPlace){System.out.println("As far as I, This Method, am aware, that does not exist or is not here");}
-        if(toAdd.tr == true){Transportation.trAdd(toAdd);} 
+      //  if(toAdd.tr == true){Transportation.trAdd(toAdd);} 
         inv.add(toAdd);
         sInv.add(toAdd.getName());
         toAdd.location = places[0];

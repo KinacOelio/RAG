@@ -4,15 +4,24 @@ package runningawaygame;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
-import static runningawaygame.RunningAwayGame.debug;
+import static runningawaygame.RunningAwayGame.*;
 
 
 public class Initialization {
     
+    //this class creates the arrays that contain the objects that are used
+    //the arrays can be found in the feilds of RunningAwayGame.class
+    //Currently, the places and things arrays are initialized by first scanning
+    //and counting the numver of entries. The array is then set to that length
+    //and it scans a second time
+    //A string is then created for each entry using scanner.next and concatonation
+    //people is still some what different and needs to be updated
+    //TODO: update people init
+    //TODO: decide wether or not to use global variables and clean up code accordingly
+    
 public static void PlaceInit() throws IOException{
     
         //INITILIZING LOCATIONS
-        //TODO: CONVERT PLACES ARRAY TO AUTOMATICALLY GENERATE (via constructor)
 if(debug)System.out.println("runningawaygame.RunningAwayGame.main()/LOCATION INIT");
  File nPlacesf = new File("Places.txt");  //create file and scanner
         Scanner nPlacesScanner = new Scanner(nPlacesf);
@@ -103,7 +112,17 @@ if(debug) System.out.println("Things: " + nThings);
         else{RunningAwayGame.things[i] = new Thing(thingString, i);}        
         }
         
-}//-----------
+}
+
+public static void playerInit(){
+  if(debug)System.out.println("runningawaygame.RunningAwayGame.main() /PLAYER INIT");
+        Player1 = new Player(places[1], folks, places);
+        Player1.inv.add(things[1]);  
+    
+    
+}
+
+//-----------
           
     
     
