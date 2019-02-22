@@ -98,7 +98,9 @@ if(debug) System.out.println("Things: " + nThings);
                 tempThing = thingScanner.nextLine();
                 thingString += " \n " + tempThing;    
             }
-            RunningAwayGame.things[i] = new Thing(thingString);          
+        if(thingString.contains("$tr")){
+        RunningAwayGame.things[i] = new Transportation(thingString, i);}
+        else{RunningAwayGame.things[i] = new Thing(thingString, i);}        
         }
         
 }//-----------
