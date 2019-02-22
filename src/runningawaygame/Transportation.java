@@ -1,22 +1,17 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package runningawaygame;
 
-import static runningawaygame.RunningAwayGame.*;
-//
+/**
+ *
+ * @author natoast
+ */
 public class Transportation extends Thing {
     public Transportation(String ThingString, int index){
-    super(ThingString, index);
-    this.tr = true;
-   
-}  
+    super(ThingString, index );
+}   
     
-public static void trAdd(Thing thing){
- if (thing.name.equals("bike")){
-        for (Place place : places) {
-            if (place.region < 30 && !place.getSec()){place.setKnown(true);}     
-    }      
-  System.out.println("You got a shiny new bike!");
- } 
-}
-
 }
