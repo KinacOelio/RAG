@@ -13,6 +13,7 @@ public class Thing {
     public String desc = "default description";
     private double cost = 0.0;
     public boolean tr = false;
+    public String getText = "You got ";
 
     
     
@@ -31,6 +32,7 @@ public class Thing {
          int b = thingString.substring(a).indexOf('\n');
          String thisName = thingString.substring(a+2, b+a).trim();     
          this.name = thisName;
+         this.getText += this.name;
     }
 
         if(thingString.contains("p>")){

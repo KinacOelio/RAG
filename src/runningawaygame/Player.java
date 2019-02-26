@@ -46,7 +46,7 @@ public class Player {
                 Place newPlace = places[i];
                 if(OKcheck(newPlace))
                 {currentPlace = newPlace;               
-                System.out.println("You are now at " + choice); return;}
+                System.out.println(newPlace.getArrivalText()); return;}
                 else  {System.out.println("invalid or unknown location");  return;}
             }     
         }
@@ -63,9 +63,9 @@ public class Player {
     public void add(String StoAdd){
         Thing toAdd = Utility.findThingFromString(things, StoAdd);
         if(toAdd.getName().equals("nothing")){return;}
-        if(toAdd.getLoc()!=currentPlace){System.out.println("As far as I, This Method, am aware, that does not exist or is not here");}
-      //  if(toAdd.tr == true){Transportation.trAdd(toAdd);} 
+        if(toAdd.getLoc()!=currentPlace){System.out.println("As far as I, This Method, am aware, that does not exist or is not here");} 
         inv.add(toAdd);
+        System.out.println(toAdd.getText);
         sInv.add(toAdd.getName());
         toAdd.location = places[0];
         

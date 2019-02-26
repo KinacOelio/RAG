@@ -83,33 +83,35 @@ if(debug)System.out.println("places.length:"+ RunningAwayGame.places.length + " 
 public static void ThingsInit() throws IOException {
      //INITIALIZING THINGS
 if(debug)System.out.println("runningawaygame.RunningAwayGame.main() /THINGS INIT");
-        File nThingsF = new File("Things.txt");  //create file and scanner
+        //create file and scanner
+        File nThingsF = new File("Things.txt"); 
         Scanner nThingScanner = new Scanner(nThingsF);
         int nThings = 0;                                            
         //run through once to get nThings
         while(nThingScanner.hasNext()){String line = nThingScanner.nextLine(); 
                                       if(line.equals("[thing]")){nThings++;}}
-        
-        File Things = new File("Things.txt");  //new scanner time
+        //new scanner time  
+        File Things = new File("Things.txt");
         Scanner thingScanner = new Scanner(Things);                             
        
 if(debug) System.out.println("Things: " + nThings);
-
+        //setting the length of the array
         RunningAwayGame.things = new Thing[nThings];
-        RunningAwayGame.sThings = new String[nThings];
         
-        for(int i = 0; i < nThings; i++){
-
+        //for loop: first bit creates the thingString, second bit instantiates
+        for(int i = 0; i < nThings; i++)
+        {
             Utility.gotoPoint(thingScanner, "[thing]");
             String tempThing = thingScanner.nextLine();
             String thingString = tempThing;
-            while(!tempThing.equals("[/thing]")){
+            while(!tempThing.equals("[/thing]"))
+            {
                 tempThing = thingScanner.nextLine();
                 thingString += " \n " + tempThing;    
             }
-        if(thingString.contains("$tr")){
-        RunningAwayGame.things[i] = new Transportation(thingString, i);}
-        else{RunningAwayGame.things[i] = new Thing(thingString, i);}        
+            if(thingString.contains("$tr")){
+            RunningAwayGame.things[i] = new Transportation(thingString, i);}
+            else{RunningAwayGame.things[i] = new Thing(thingString, i);}        
         }
         
 }

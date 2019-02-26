@@ -10,9 +10,11 @@ public class Place {
     public static ArrayList<NPC> people = new ArrayList<>();
     private String name = "default_name";
     private String desc = "default_desc";
+    private String arrivalText = "you arrive at ";
     private boolean known = false; 
     private boolean secret = false;
     int region = 0;
+    
     //regions:
     //0 = default
     //00 = everywhere
@@ -28,7 +30,8 @@ if(RunningAwayGame.debug){System.out.println("[name] = true");}
         int b = fullString.indexOf("[/name]");
          String thisName = fullString.substring(a, b);
          thisName = thisName.replace("[name]", "").trim();
-         this.name = thisName;   
+         this.name = thisName;  
+         this.arrivalText += name;
 }
     if(fullString.contains("k>")){
          int a = fullString.indexOf("k>");
@@ -64,6 +67,7 @@ public String getName() {return name;}
 public String getDesc() {return desc;}
 public boolean getKnown() {return known;}
 public boolean getSec() {return secret;}
+public String getArrivalText() {return arrivalText;}
 
 public void setKnown(Boolean known){this.known = known;}
 
