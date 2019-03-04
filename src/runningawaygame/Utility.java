@@ -1,22 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-//
 package runningawaygame;
 
+import runningawaygame.Things.Thing;
 import java.util.Scanner;
 import static runningawaygame.RunningAwayGame.*;
 
-
-
 public class Utility {
-
-
-    
-    
+   
 public static String fileReader(String toRead){
          toRead = toRead.replace("%n", "\n");
          if (toRead.charAt(0) == '<'){
@@ -28,39 +18,45 @@ public static String fileReader(String toRead){
     }
 
 
+
+
 public static Place findPlaceFromString(String placeString){
-    for(int i = 0; i < places.length; i++){
-        if(places[i].getName().equals(placeString)){
-            return places[i];
+    for(int i = 0; i < placesList.length; i++){
+        if(placesList[i].getName().equals(placeString)){
+            return placesList[i];
             }
          }
     System.out.println("\nError, place not found, returning places[0]");
 if(debug) System.out.println("placeString: " + placeString + "\n");
-    return places[0];
+    return placesList[0];
 }
   
-
-public static NPC findNPCFromString(NPC[] folks, String[] sFolks, String placeString){
+public static NPC findNPCFromString(NPC[] folks, String placeString){
     int index = 0;
     try{
-    while(!sFolks[index].equalsIgnoreCase(placeString)){
+    while(!NPClist[index].getName().equalsIgnoreCase(placeString)){
         index++;}
     return folks[index];}
-    catch(Exception e){System.out.println("hmm, that isn't a person, you seem to be talking to yourself."); return folks[1]; }
+    catch(Exception e)
+    {
+        System.out.println("hmm, that isn't a person, you seem to be talking to yourself.");
+        return folks[1];
     }
-
+}
 
 public static Thing findThingFromString(Thing[] things, String thingString){
     
     for(int i = 0; i < things.length; i++){
-        if(things[i].name.equals(thingString)){
+        if(things[i].getName().equals(thingString)){
             return things[i];}
          }
     
-    System.out.println("As far as I, This Method, am aware, that does not exist or is not here");
+ //   System.out.println("As far as I, This Method, am aware, that does not exist or is not here");
     return things[0];
 }
-    
+  
+
+
 public static String gotoPoint(Scanner scan, String gotoString){
             
             String tempString = "";

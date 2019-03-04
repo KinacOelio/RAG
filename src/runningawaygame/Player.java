@@ -1,6 +1,7 @@
 
 package runningawaygame;
 
+import runningawaygame.Things.Thing;
 import java.util.ArrayList;
 import java.util.List;
 import static runningawaygame.RunningAwayGame.*;
@@ -36,21 +37,9 @@ public class Player {
         
     }
     
-    public void setPlace(String choice, String[] sPlaces, Place[] places){      
-       // System.out.println("running 1 with " + choice);
-        for (int i = 0; i < sPlaces.length; i++){
-            //System.out.println("running 2, comparing to " + sPlaces[i]);
-            if(choice.equals(sPlaces[i])){
-             //   System.out.println(places[i].getKnown() + "running 3");
-                placeIndex = i;
-                Place newPlace = places[i];
-                if(OKcheck(newPlace))
-                {currentPlace = newPlace;               
-                System.out.println(newPlace.getArrivalText()); return;}
-                else  {System.out.println("invalid or unknown location");  return;}
-            }     
-        }
-        System.out.println("invalid or unknown location");  return;
+    public void setPlace(String choice, Place[] placeList){      
+        Place toPlace = Utility.findPlaceFromString(choice);
+        this.currentPlace = toPlace;
     }
     
     public Place getPlace(){return currentPlace;}
@@ -61,24 +50,21 @@ public class Player {
        }
     
     public void add(String StoAdd){
-        Thing toAdd = Utility.findThingFromString(things, StoAdd);
+        runningawaygame.Things.Gettable toAdd = (runningawaygame.Things.Gettable)Utility.findThingFromString(thingsList, StoAdd);
         if(toAdd.getName().equals("nothing")){return;}
         if(toAdd.getLoc()!=currentPlace){System.out.println("As far as I, This Method, am aware, that does not exist or is not here");} 
         inv.add(toAdd);
-        System.out.println(toAdd.getText);
+        System.out.println(toAdd.getText());
         sInv.add(toAdd.getName());
-        toAdd.location = places[0];
+        toAdd.setLoc(placesList[0]);
         
         
         
     }
     public void listInv(){
         for(int i = 0; i < sInv.size(); i++){
-           // System.out.print(sInv<i>);
-            
-        }
-        
-        
+           // System.out.print(sInv<i>);    
+        }   
     }
     
 

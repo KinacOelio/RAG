@@ -14,6 +14,9 @@ public class NPC {
     Scanner keyboard = new Scanner(System.in);
     String[] commands;
     
+       public Place getPlace(){return currentPlace;}
+       public String getName() {return name;}
+    
     public NPC(String name, Place currentPlace)throws IOException{
         //TODO::: In constructor, load in array of options
         
@@ -92,7 +95,7 @@ public class NPC {
         }
         }
            
-    public Place getPlace(){return currentPlace;}
+ 
     
     public void command(String command, Place[] places){
         System.out.print("  Got to the command method! "  + command.substring(0, 4));

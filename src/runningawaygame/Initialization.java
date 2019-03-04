@@ -1,6 +1,8 @@
 
 package runningawaygame;
 
+import runningawaygame.Things.Transportation;
+import runningawaygame.Things.Thing;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -31,10 +33,9 @@ if(debug)System.out.println("runningawaygame.RunningAwayGame.main()/LOCATION INI
                                       if(line.equals("[loc]")){nPlaces++;}}
         nPlacesScanner.close();
         
-        File Places = new File("Places.txt");  //creating file
-        Scanner pScan = new Scanner(Places);    //creating scanner
-        RunningAwayGame.places = new Place[nPlaces]; //setting arrays to number of places
-        RunningAwayGame.sPlaces = new String[nPlaces];
+        File PlacesF = new File("Places.txt");  //creating file
+        Scanner pScan = new Scanner(PlacesF);    //creating scanner
+        RunningAwayGame.placesList = new Place[nPlaces]; //setting arrays to number of places
         
         for(int i = 0; i < nPlaces; i++){  //for loop of length number of places
           Utility.gotoPoint(pScan, "[loc]"); //scans until reaching loc tag
@@ -44,10 +45,8 @@ if(debug)System.out.println("runningawaygame.RunningAwayGame.main()/LOCATION INI
                NPCtempString = pScan.nextLine();
                NPCfullString = NPCfullString + NPCtempString + " \n";
           }
-        RunningAwayGame.places[i] = new Place(NPCfullString);
+        RunningAwayGame.placesList[i] = new Place(NPCfullString);   
         }
-        for(int i = 0; i < nPlaces; i++){RunningAwayGame.sPlaces[i] = RunningAwayGame.places[i].getName(); 
-        } //creates string array of places from regular array
       
 }
 
@@ -55,26 +54,24 @@ public static void NPCInit() throws IOException{
      //INITIALIZING NPC's
 if(debug)System.out.println("runningawaygame.RunningAwayGame.main()/NPC INIT");
         //something something politics
-        RunningAwayGame.folks = new NPC[100];
-        RunningAwayGame.sFolks = new String[100];
-        File people = new File("People.txt");
-        Scanner peepScan = new Scanner(people);
+        RunningAwayGame.NPClist = new NPC[100];
+        File peopleF = new File("People.txt");
+        Scanner peopleScan = new Scanner(peopleF);
         int folksN = 0;
          
         //this block is messy...
         String cnt = "cnt";
         while(!cnt.equals("END")){
-        cnt = Utility.gotoPoint(peepScan, "NPC");
+        cnt = Utility.gotoPoint(peopleScan, "NPC");
         if(!cnt.equals("END")){
-        String NPCname = peepScan.nextLine();
-            RunningAwayGame.sFolks[folksN] = NPCname;
-        String NPCplaceStr = peepScan.nextLine(); 
-if(debug)System.out.println("places.length:"+ RunningAwayGame.places.length + "  sPlaces.length:" +  RunningAwayGame.sPlaces.length + "  folksN:" + folksN);
+        String NPCname = peopleScan.nextLine();
+        String NPCplaceStr = peopleScan.nextLine(); 
+if(debug)System.out.println("places.length:"+ RunningAwayGame.placesList.length + "  sPlaces.length:" +  RunningAwayGame.placesList.length + "  folksN:" + folksN);
         Place NPCplace = Utility.findPlaceFromString(NPCplaceStr);
-        RunningAwayGame.folks[folksN] = new NPC(NPCname, NPCplace);
+        RunningAwayGame.NPClist[folksN] = new NPC(NPCname, NPCplace);
         folksN++;
         }}
-        peepScan.close();
+        peopleScan.close();
         //-----------
        
     
@@ -91,12 +88,12 @@ if(debug)System.out.println("runningawaygame.RunningAwayGame.main() /THINGS INIT
         while(nThingScanner.hasNext()){String line = nThingScanner.nextLine(); 
                                       if(line.equals("[thing]")){nThings++;}}
         //new scanner time  
-        File Things = new File("Things.txt");
-        Scanner thingScanner = new Scanner(Things);                             
+        File ThingsF = new File("Things.txt");
+        Scanner thingScanner = new Scanner(ThingsF);                             
        
 if(debug) System.out.println("Things: " + nThings);
         //setting the length of the array
-        RunningAwayGame.things = new Thing[nThings];
+        RunningAwayGame.thingsList = new Thing[nThings];
         
         //for loop: first bit creates the thingString, second bit instantiates
         for(int i = 0; i < nThings; i++)
@@ -110,18 +107,16 @@ if(debug) System.out.println("Things: " + nThings);
                 thingString += " \n " + tempThing;    
             }
             if(thingString.contains("$tr")){
-            RunningAwayGame.things[i] = new Transportation(thingString, i);}
-            else{RunningAwayGame.things[i] = new Thing(thingString, i);}        
+            RunningAwayGame.thingsList[i] = new Transportation(thingString, i);}
+            else{RunningAwayGame.thingsList[i] = new Thing(thingString, i);}        
         }
         
 }
 
 public static void playerInit(){
   if(debug)System.out.println("runningawaygame.RunningAwayGame.main() /PLAYER INIT");
-        Player1 = new Player(places[1], folks, places);
-        Player1.inv.add(things[1]);  
-    
-    
+        Player1 = new Player(placesList[1], NPClist, placesList);
+        Player1.inv.add(thingsList[1]);  
 }
 
 //-----------

@@ -13,11 +13,14 @@ public class Place {
     private String arrivalText = "you arrive at ";
     private boolean known = false; 
     private boolean secret = false;
-    int region = 0;
+    int region = -1;
+    
+    public void setName(String name){this.name = name;}
+
     
     //regions:
-    //0 = default
-    //00 = everywhere
+    //-1 = default
+    //0 = everywhere
     //1* = home
     //2* = in town
     //3* = out of town
