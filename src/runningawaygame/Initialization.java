@@ -108,7 +108,10 @@ if(debug) System.out.println("Things: " + nThings);
             }
             if(thingString.contains("$tr")){
             RunningAwayGame.thingsList[i] = new Transportation(thingString, i);}
-            else{RunningAwayGame.thingsList[i] = new Thing(thingString, i);}        
+            else{
+                RunningAwayGame.thingsList[i] = new Thing(thingString, i);
+if(debug) System.out.println( RunningAwayGame.thingsList[i].getName());
+            }        
         }
         
 }

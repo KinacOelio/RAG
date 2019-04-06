@@ -24,7 +24,6 @@ public class Thing {
         //name
         //location
         //s<desc
-        //c<cost
         //
     
     public Thing(String thingString, int index){

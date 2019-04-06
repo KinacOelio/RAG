@@ -57,8 +57,10 @@ k> y
 r> 12
 
 [desc]
-This is like, the kitchen.
-Imagine your kitchen and it is this becuase you are the person who lives in the house this kitchen is contained in.
+Your kitchen is small and a bit yellowed. There is a big gas stove and a small refreigerator. 
+The blender is brand new.
+There are various fresh fruits out and a painting of a dog on the wall.
+
 [/desc]
 [/loc]
 ----------------
