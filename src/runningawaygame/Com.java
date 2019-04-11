@@ -1,10 +1,10 @@
 
 package runningawaygame;
 
-import runningawaygame.Things.Thing;
+import runningawaygame.Things.*;
 import java.util.List;
 import java.util.Scanner;
-import static runningawaygame.RunningAwayGame.*;
+import static runningawaygame.RunningAwayGame.*;  
 
 
 public class Com {  
@@ -12,23 +12,56 @@ public class Com {
 //the list of command methods for the switch statement      
 public void go(Player Player1, Place[] places){
     
-     String uInput2 = keyboard.nextLine().trim();  
-     Player1.setPlace(uInput2, places);}
+     String destination = keyboard.nextLine().trim();
+     System.out.println("How would you like to travel?");
+     int key = 1;
+     System.out.println(key + ": walk");
+     key++;
+     for(Thing _thing : thingsList)
+     {
+         if(
+            _thing.getPlace() == Player1.getPlace() &&
+            _thing.isTransport &&
+            _thing.usable
+           ){
+             System.out.println(key + ": Use " + _thing.getName());
+             key++;
+            }
+     }
+     int method = 0;
+     try
+     {
+         method = Integer.parseInt(keyboard.next());
+         if(method < 1 || method > key) throw new NumberFormatException();
+     }catch(NumberFormatException e)
+     {
+         System.out.println("I'm not familiar with that form of transportation");
+     }
+     if(method != 0)
+     {
+         Player1.setPlace(destination, placesList);
+     }
+         
+     
+     
+     
+     
+}
 
 public void look(Player Player1){
-    System.out.print(Player1.getPlace().getDesc());
-    System.out.println();}
+     System.out.print(Player1.getPlace().getDesc());
+     System.out.println();}
 
 public void list()
 {
-    String uInput2 = keyboard.next().trim();
+   String uInput2 = keyboard.next().trim();
    switch(uInput2)
   {
-   case "places":
-    int l = placesList.length;
-    System.out.print("You have discovered: ");
-    for(int i = 0; i<l; i++){if(placesList[i].getKnown()){System.out.print(placesList[i].getName() + "; ");}}
-    System.out.println();
+     case "places":
+        int l = placesList.length;
+   System.out.print("You have discovered: ");
+   for(int i = 0; i<l; i++){if(placesList[i].getKnown()){System.out.print(placesList[i].getName() + "; ");}}
+   System.out.println();
    break;
    case "inv": case "inventory":
     List<Thing> inv1 = Player1.getInv();
@@ -81,7 +114,7 @@ public void ex(){
 String uInput2 = keyboard.nextLine().trim();
 Thing toEx = Utility.findThingFromString(thingsList, uInput2);
 if(Player1.inv.contains(toEx) ||
-   toEx.getLoc().getName().equals(Player1.getPlace().getName()))
+   toEx.getPlace().getName().equals(Player1.getPlace().getName()))
 
 {System.out.println(toEx.getDesc());}
 else{System.out.println("You don't see that...");}

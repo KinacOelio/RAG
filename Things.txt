@@ -1,5 +1,9 @@
 
-
+what is our actualy plan here...
+we have a Thing class
+AND a Gettable class
+AND a holdable class
+why do we need a holdable class
 
 
 [thing]

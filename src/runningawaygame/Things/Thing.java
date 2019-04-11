@@ -1,4 +1,4 @@
-
+ 
 package runningawaygame.Things;
 
 
@@ -10,10 +10,12 @@ public class Thing {
     private int index;
     private String name = "default name";
     private Place location = placesList[0];
-    private String desc = "default description";;
+    private String desc = "default description";
+    public boolean isTransport = false;
+    public boolean usable = false;
 
     public String getName(){return name;}
-    public Place getLoc(){return location;}
+    public Place getPlace(){return location;}
     public String getDesc(){return desc;}
     public int getIndex(){return index;}
     

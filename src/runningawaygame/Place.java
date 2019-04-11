@@ -14,7 +14,7 @@ public class Place {
     private boolean known = false; 
     private boolean secret = false;
     int region = -1;
-    
+     
     public void setName(String name){this.name = name;}
 
     
@@ -70,6 +70,7 @@ public String getName() {return name;}
 public String getDesc() {return desc;}
 public boolean getKnown() {return known;}
 public boolean getSec() {return secret;}
+public int getRegion() {return region;}
 public String getArrivalText() {return arrivalText;}
 
 public void setKnown(Boolean known){this.known = known;}

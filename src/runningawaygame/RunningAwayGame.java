@@ -46,7 +46,7 @@ if(debug)System.out.println("runningawaygame.RunningAwayGame.main() /PRIMARY LOO
             //debug coms
             case "$p": com.trueListPlaces(); break;
             case "$r": System.out.println(Player1.getPlace().region); break;
-            case "$t": for(Thing thing : thingsList){System.out.print(thing.getName() + ":" + thing.getLoc().getName() +"; "); break;}
+            case "$t": for(Thing thing : thingsList){System.out.print(thing.getName() + ":" + thing.getLoc().getName() +"; ");} break;
                         
             default: System.out.println("Try something that isn't stupid how about");}
         }//END PRIMARY WHILE LOOP

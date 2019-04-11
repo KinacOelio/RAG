@@ -13,8 +13,8 @@ import static runningawaygame.RunningAwayGame.*;
 public class Player {
     private Place currentPlace;
     private int placeIndex;
-    public List<Thing> inv = new ArrayList<Thing>();
-    private List<String> sInv = new ArrayList<String>();
+    public List<Thing> inv = new ArrayList<>();
+    private List<String> sInv = new ArrayList<>();
     private double cash = 12.10;
 
     
@@ -52,7 +52,7 @@ public class Player {
     public void add(String StoAdd){
         runningawaygame.Things.Gettable toAdd = (runningawaygame.Things.Gettable)Utility.findThingFromString(thingsList, StoAdd);
         if(toAdd.getName().equals("nothing")){return;}
-        if(toAdd.getLoc()!=currentPlace){System.out.println("As far as I, This Method, am aware, that does not exist or is not here");} 
+        if(toAdd.getPlace()!=currentPlace){System.out.println("As far as I, This Method, am aware, that does not exist or is not here");} 
         inv.add(toAdd);
         System.out.println(toAdd.getText());
         sInv.add(toAdd.getName());
