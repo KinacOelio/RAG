@@ -119,7 +119,7 @@ if(debug) System.out.println( RunningAwayGame.thingsList[i].getName());
 public static void playerInit(){
   if(debug)System.out.println("runningawaygame.RunningAwayGame.main() /PLAYER INIT");
         Player1 = new Player(placesList[1], NPClist, placesList);
-        Player1.inv.add(thingsList[1]);  
+        Player1.getInv().add(thingsList[1]);  
 }
 
 //-----------

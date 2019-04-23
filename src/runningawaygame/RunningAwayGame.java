@@ -16,11 +16,8 @@ public class RunningAwayGame {
     public static NPC[] NPClist;
 public static boolean debug = true;
 
-
     
     public static void main(String[] args) throws IOException {
-
-      
         
         Initialization.PlaceInit();
         Initialization.NPCInit();

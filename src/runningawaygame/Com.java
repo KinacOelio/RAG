@@ -2,7 +2,7 @@
 package runningawaygame;
 
 import runningawaygame.Things.*;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 import static runningawaygame.RunningAwayGame.*;  
 
@@ -15,17 +15,19 @@ public void go(Player Player1, Place[] places){
      String destination = keyboard.nextLine().trim();
      System.out.println("How would you like to travel?");
      int key = 1;
+     ArrayList<Transportation> modes = new ArrayList<>();
      System.out.println(key + ": walk");
-     key++;
-     for(Thing _thing : thingsList)
+     
+     for(Thing theThing : thingsList)
      {
          if(
-            _thing.getPlace() == Player1.getPlace() &&
-            _thing.isTransport &&
-            _thing.usable
+            theThing.getPlace() == Player1.getPlace() &&
+            theThing.isTransport &&
+            theThing.usable
            ){
-             System.out.println(key + ": Use " + _thing.getName());
              key++;
+             System.out.println(key + ": Use " + theThing.getName());
+             modes.add((Transportation)theThing);
             }
      }
      int method = 0;
@@ -35,17 +37,21 @@ public void go(Player Player1, Place[] places){
          if(method < 1 || method > key) throw new NumberFormatException();
      }catch(NumberFormatException e)
      {
-         System.out.println("I'm not familiar with that form of transportation");
+         System.out.println("I am but a simple program, you have to choose a number.");
+         return;
      }
      if(method != 0)
      {
          Player1.setPlace(destination, placesList);
-     }
+         if(method == 1) System.out.println("Ok, walkin'");  
+         else 
+         {
+             System.out.println("Ok, going via " + modes.get(method-2).getName());
+             Place classDestination = Utility.findPlaceFromString(destination);
+             modes.get(method-2).setLoc(classDestination);
+         }
          
-     
-     
-     
-     
+     }  
 }
 
 public void look(Player Player1){
@@ -64,7 +70,7 @@ public void list()
    System.out.println();
    break;
    case "inv": case "inventory":
-    List<Thing> inv1 = Player1.getInv();
+    ArrayList<Thing> inv1 = Player1.getInv();
     int m = inv1.size();
     System.out.print("You have: ");
     for(int i = 0; i<m; i++){System.out.print(inv1.get(i).getName() + "; ");}
@@ -80,7 +86,7 @@ public void list(String input2){
     System.out.println();
    break;
    case "inv": case "inventory":
-    List<Thing> inv1 = Player1.getInv();
+    ArrayList<Thing> inv1 = Player1.getInv();
     int m = inv1.size();
     System.out.print("You have: ");
     for(int i = 0; i<m; i++){System.out.print(inv1.get(i).getName() + "; ");}
@@ -106,7 +112,7 @@ String NPCtoTalk = keyboard.next().toUpperCase();
 NPC person = Utility.findNPCFromString(folks, NPCtoTalk);
 Place e = places[0];
 if(person.getPlace()==Player1.getPlace()||person.getPlace()==e){
-person.talk(places);}
+person.talk();}
 else{System.out.println("That person is not here!");}
 }
 

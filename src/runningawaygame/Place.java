@@ -8,7 +8,7 @@ import runningawaygame.RunningAwayGame.*;
 
 public class Place {
     public static ArrayList<NPC> people = new ArrayList<>();
-    private String name = "default_name";
+    private String name = "default_name"; 
     private String desc = "default_desc";
     private String arrivalText = "you arrive at ";
     private boolean known = false; 

@@ -20,15 +20,15 @@ public static String fileReader(String toRead){
 
 
 
-public static Place findPlaceFromString(String placeString){
+public static Place findPlaceFromString(String placeString)throws Exception{
     for(int i = 0; i < placesList.length; i++){
         if(placesList[i].getName().equals(placeString)){
             return placesList[i];
             }
          }
     System.out.println("\nError, place not found, returning places[0]");
-if(debug) System.out.println("placeString: " + placeString + "\n");
-    return placesList[0];
+    if(debug) System.out.println("placeString: " + placeString + "\n");
+    throw new Exception();
 }
   
 public static NPC findNPCFromString(NPC[] folks, String placeString){

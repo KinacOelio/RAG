@@ -61,7 +61,7 @@ public class NPC {
         
     }
     
-    public void talk(Place[] places){
+    public void talk(){
         System.out.println(dialogue[0]);
         boolean exit = false;
         int currentDi = 0;
@@ -83,7 +83,7 @@ public class NPC {
             String theLine = dialogue[currentDi];
             commands = theLine.substring(1).split("%");
             System.out.println("Got here!!! Test: " + commands[0] );
-            command(commands[0], places);
+            command(commands[0], runningawaygame.RunningAwayGame.placesList);
             System.out.println("Got here!!! Test: " + commands[0] );
             }
             if(dialogue[currentDi].charAt(0)=='%'){System.out.println(commands[1]);}

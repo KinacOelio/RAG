@@ -13,8 +13,8 @@ import static runningawaygame.RunningAwayGame.*;
 public class Player {
     private Place currentPlace;
     private int placeIndex;
-    public List<Thing> inv = new ArrayList<>();
-    private List<String> sInv = new ArrayList<>();
+    public ArrayList<Thing> inv = new ArrayList<>();
+    private ArrayList<String> sInv = new ArrayList<>();
     private double cash = 12.10;
 
     
@@ -23,7 +23,7 @@ public class Player {
         currentPlace = start;
         
 
-        folks[0].talk(places);
+        folks[0].talk();
         System.out.println("As you take a deep breath, you think of the various things you can do. You can GOTO a LOCATION,\n"
                 + "you can LIST the various PLACES that you have access to, \n"
                 + "you can also LIST your (INV)ENTORY, \n"
@@ -43,7 +43,7 @@ public class Player {
     }
     
     public Place getPlace(){return currentPlace;}
-    public List<Thing> getInv(){return inv;}
+    public ArrayList<Thing> getInv(){return inv;}
     
     public boolean OKcheck(Place newPlace){
         return newPlace.getKnown();

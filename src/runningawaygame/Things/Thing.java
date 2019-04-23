@@ -18,6 +18,7 @@ public class Thing {
     public Place getPlace(){return location;}
     public String getDesc(){return desc;}
     public int getIndex(){return index;}
+    public Place getLoc() {return this.location;}
     
     public void setLoc(Place place){this.location = place;}
     
