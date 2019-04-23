@@ -10,9 +10,19 @@ import static runningawaygame.RunningAwayGame.*;
 public class Com {  
 //-------------------------------------------------     
 //the list of command methods for the switch statement      
-public void go(Player Player1, Place[] places){
+public void go(Player Player1, Place[] places)throws Exception{
     
      String destination = keyboard.nextLine().trim();
+     Place classDestination;
+     try{
+         classDestination = Utility.findPlaceFromString(destination);
+     }
+     //TODO: make this a real exception
+     catch(Exception e){
+         System.out.println("That is not a place you know!");
+         return;
+     }
+          
      System.out.println("How would you like to travel?");
      int key = 1;
      ArrayList<Transportation> modes = new ArrayList<>();
@@ -47,7 +57,6 @@ public void go(Player Player1, Place[] places){
          else 
          {
              System.out.println("Ok, going via " + modes.get(method-2).getName());
-             Place classDestination = Utility.findPlaceFromString(destination);
              modes.get(method-2).setLoc(classDestination);
          }
          

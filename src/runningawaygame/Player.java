@@ -37,7 +37,7 @@ public class Player {
         
     }
     
-    public void setPlace(String choice, Place[] placeList){      
+    public void setPlace(String choice, Place[] placeList)throws Exception{      
         Place toPlace = Utility.findPlaceFromString(choice);
         this.currentPlace = toPlace;
     }

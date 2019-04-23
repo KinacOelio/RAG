@@ -17,7 +17,7 @@ public class RunningAwayGame {
 public static boolean debug = true;
 
     
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, Exception{
         
         Initialization.PlaceInit();
         Initialization.NPCInit();

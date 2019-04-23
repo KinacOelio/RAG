@@ -50,7 +50,7 @@ if(debug)System.out.println("runningawaygame.RunningAwayGame.main()/LOCATION INI
       
 }
 
-public static void NPCInit() throws IOException{  
+public static void NPCInit() throws IOException, Exception{  
      //INITIALIZING NPC's
 if(debug)System.out.println("runningawaygame.RunningAwayGame.main()/NPC INIT");
         //something something politics
@@ -77,7 +77,7 @@ if(debug)System.out.println("places.length:"+ RunningAwayGame.placesList.length 
     
 }
     
-public static void ThingsInit() throws IOException {
+public static void ThingsInit() throws IOException, Exception {
      //INITIALIZING THINGS
 if(debug)System.out.println("runningawaygame.RunningAwayGame.main() /THINGS INIT");
         //create file and scanner
@@ -107,9 +107,9 @@ if(debug) System.out.println("Things: " + nThings);
                 thingString += " \n " + tempThing;    
             }
             if(thingString.contains("$tr")){
-            RunningAwayGame.thingsList[i] = new Transportation(thingString, i);}
+                 RunningAwayGame.thingsList[i] = new Transportation(thingString, i);}
             else{
-                RunningAwayGame.thingsList[i] = new Thing(thingString, i);
+                 RunningAwayGame.thingsList[i] = new Thing(thingString, i);
 if(debug) System.out.println( RunningAwayGame.thingsList[i].getName());
             }        
         }

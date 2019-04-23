@@ -97,7 +97,7 @@ public class NPC {
            
  
     
-    public void command(String command, Place[] places){
+    public void command(String command, Place[] places) throws Exception{
         System.out.print("  Got to the command method! "  + command.substring(0, 4));
         if("know".equals(command.substring(0, 4))){
             String toLearn = command.substring(4).trim();

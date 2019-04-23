@@ -29,7 +29,7 @@ public class Thing {
         //s<desc
         //
     
-    public Thing(String thingString, int index){
+    public Thing(String thingString, int index)throws Exception{
         this.index = index;
         if(thingString.contains("n>")){
          int a = thingString.indexOf("n>");
