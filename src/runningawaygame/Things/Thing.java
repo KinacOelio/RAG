@@ -2,6 +2,7 @@
 package runningawaygame.Things;
 
 
+import java.util.ArrayList;
 import runningawaygame.Place;
 import runningawaygame.Utility;
 import static runningawaygame.RunningAwayGame.*;
@@ -11,10 +12,24 @@ public class Thing {
     private String name = "default name";
     private Place location = placesList[0];
     private String desc = "default description";
+    private ArrayList<Thing> required = new ArrayList<>();
+    
+    //flags
     public boolean isTransport = false;
-    public boolean usable = false;
-
-    public String getName(){return name;}
+    public boolean usable = true;
+    public boolean gettable = true;
+    
+    
+    public String getName(){
+        //boolean isUsable = true;
+        //for(Thing req : required){
+           // if(!Player1.inv.contains(req))
+              //  isUsable = false;        
+       // }
+        //isUsable = this.usable;
+        return name;
+    
+    }
     public Place getPlace(){return location;}
     public String getDesc(){return desc;}
     public int getIndex(){return index;}

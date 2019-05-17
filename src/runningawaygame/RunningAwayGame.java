@@ -33,10 +33,10 @@ public static boolean debug = true;
 if(debug)System.out.println("runningawaygame.RunningAwayGame.main() /PRIMARY LOOP");
         switch(uInput){
             case "end": case "quit": end = true; break;      
-            case "goto": case "go": com.go(Player1, placesList); break;
-            case "look": com.look(Player1); break;
+            case "goto": case "go": com.go(); break;
+            case "look": com.look(); break;
             case "list": com.list(); break;
-            case "talk": com.talk(keyboard, NPClist, Player1, placesList); break;
+            case "talk": com.talk(); break;
             case "get": com.get(); break;
             case "inv": com.list("inv"); break;
             case "ex": com.ex(); break;

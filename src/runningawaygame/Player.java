@@ -6,10 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import static runningawaygame.RunningAwayGame.*;
 
-/**
- *
- * @author natoast
- */
 public class Player {
     private Place currentPlace;
     private int placeIndex;
@@ -32,15 +28,10 @@ public class Player {
                 + "you can GET THINGS in the same area as you,\n"
                 + "and you can (EX)AMINE a thing that you have.\n"
                 + "It does not have to be in caps though. You are not sure why your were thinking those words like that.\n ");
-        
-        
-        
+
     }
     
-    public void setPlace(String choice, Place[] placeList)throws Exception{      
-        Place toPlace = Utility.findPlaceFromString(choice);
-        this.currentPlace = toPlace;
-    }
+    public void setPlace(Place place){this.currentPlace = place;}
     
     public Place getPlace(){return currentPlace;}
     public ArrayList<Thing> getInv(){return inv;}
@@ -50,11 +41,21 @@ public class Player {
        }
     
     public void add(String StoAdd){
-        runningawaygame.Things.Gettable toAdd = (runningawaygame.Things.Gettable)Utility.findThingFromString(thingsList, StoAdd);
-        if(toAdd.getName().equals("nothing")){return;}
+        Thing toAdd;
+        try{
+            toAdd = Utility.findThingFromString(StoAdd);
+        }catch(Exception SearchFailedException){
+            return;
+        }
+        
+        if(toAdd.getName().equals("nothing") 
+        || toAdd.gettable == false){
+            return;
+        }
+           
         if(toAdd.getPlace()!=currentPlace){System.out.println("As far as I, This Method, am aware, that does not exist or is not here");} 
         inv.add(toAdd);
-        System.out.println(toAdd.getText());
+        System.out.println("you pick up the " + toAdd.getName());
         sInv.add(toAdd.getName());
         toAdd.setLoc(placesList[0]);
         

@@ -10,60 +10,46 @@ import static runningawaygame.RunningAwayGame.*;
 public class Com {  
 //-------------------------------------------------     
 //the list of command methods for the switch statement      
-public void go(Player Player1, Place[] places)throws Exception{
+public void go(){
     
-     String destination = keyboard.nextLine().trim();
-     Place classDestination;
+    //#gets the desired location, stores it as a Place
+     String sDestination = keyboard.nextLine().trim();
+     Place destination;
      try{
-         classDestination = Utility.findPlaceFromString(destination);
+         destination = Utility.findPlaceFromString(sDestination);
      }
      //TODO: make this a real exception
-     catch(Exception e){
-         System.out.println("That is not a place you know!");
+     catch(Exception SearchFailedException){
+         System.err.println("Sorry, place thing doesn't exist or isn't available!");
          return;
      }
-          
+      
+    //#gets the method of transportation
      System.out.println("How would you like to travel?");
-     int key = 1;
-     ArrayList<Transportation> modes = new ArrayList<>();
-     System.out.println(key + ": walk");
-     
-     for(Thing theThing : thingsList)
-     {
-         if(
-            theThing.getPlace() == Player1.getPlace() &&
-            theThing.isTransport &&
-            theThing.usable
-           ){
-             key++;
-             System.out.println(key + ": Use " + theThing.getName());
-             modes.add((Transportation)theThing);
-            }
+     String sMethod = keyboard.nextLine().trim();
+     Thing method;
+          try{
+             method = Utility.findThingFromString(sMethod);
+             if(method.getLoc() != Player1.getPlace()
+             || false){
+                 System.err.println("Sorry, that method isn't avaiable!");
+                 return;
+             }
      }
-     int method = 0;
-     try
-     {
-         method = Integer.parseInt(keyboard.next());
-         if(method < 1 || method > key) throw new NumberFormatException();
-     }catch(NumberFormatException e)
-     {
-         System.out.println("I am but a simple program, you have to choose a number.");
+     //TODO: make this a real exception
+     catch(Exception SearchFailedException){
+         System.err.println("Sorry, that method doesn't exist or isn't availabe!");
          return;
      }
-     if(method != 0)
-     {
-         Player1.setPlace(destination, placesList);
-         if(method == 1) System.out.println("Ok, walkin'");  
-         else 
-         {
-             System.out.println("Ok, going via " + modes.get(method-2).getName());
-             modes.get(method-2).setLoc(classDestination);
-         }
          
-     }  
+     Player1.setPlace(destination);
+     method.setLoc(destination);
+     
+     
+     
 }
 
-public void look(Player Player1){
+public void look(){
      System.out.print(Player1.getPlace().getDesc());
      System.out.println();}
 
@@ -116,23 +102,36 @@ public void get(){
     String uInput2 = keyboard.nextLine().trim();
     Player1.add(uInput2);}
 
-public void talk(Scanner keyboard, NPC[] folks, Player Player1, Place[] places){
-String NPCtoTalk = keyboard.next().toUpperCase();
-NPC person = Utility.findNPCFromString(folks, NPCtoTalk);
-Place e = places[0];
-if(person.getPlace()==Player1.getPlace()||person.getPlace()==e){
-person.talk();}
-else{System.out.println("That person is not here!");}
+public void talk(){
+    String NPCtoTalk = keyboard.next().toUpperCase();
+    NPC person;
+    try{
+        person = Utility.findNPCFromString(NPCtoTalk);
+    }catch(Exception SearchFailedException){
+        return;
+    }
+    
+    if(person.getPlace()==Player1.getPlace()
+    || person.getPlace()==placesList[0]){
+        person.talk();
+    }
+    else{System.out.println("That person is not here!");}
 }
 
 public void ex(){
-String uInput2 = keyboard.nextLine().trim();
-Thing toEx = Utility.findThingFromString(thingsList, uInput2);
-if(Player1.inv.contains(toEx) ||
-   toEx.getPlace().getName().equals(Player1.getPlace().getName()))
-
-{System.out.println(toEx.getDesc());}
-else{System.out.println("You don't see that...");}
+    String uInput2 = keyboard.nextLine().trim();
+    Thing toEx;
+    try{
+         toEx = Utility.findThingFromString(uInput2);
+    }catch(Exception SearchFailedException){
+        return;
+    }
+    if(Player1.inv.contains(toEx) ||
+       toEx.getPlace().getName().equals(Player1.getPlace().getName())){
+         System.out.println(toEx.getDesc());}
+    else{
+        System.out.println("You don't see that...");
+    }
 }
 
 

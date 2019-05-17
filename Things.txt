@@ -28,6 +28,13 @@ p> yard
 [/thing]
 
 [thing]
+$tr
+n> dad's car
+p> yard
+[desc] you'll need the keys... [/desc]
+[/thing]
+
+[thing]
 n> book
 p> room
 [desc] it is a different brown [/desc]
@@ -45,7 +52,12 @@ n> book (special)
 p> church
 [/thing]
 
-
+[thing]
+$tr
+n> walk
+p> room
+[desc] your own damn feet[/desc]
+[/thing]
 
 
 END

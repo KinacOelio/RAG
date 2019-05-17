@@ -20,7 +20,7 @@ public static String fileReader(String toRead){
 
 
 
-public static Place findPlaceFromString(String placeString)throws Exception{
+public static Place findPlaceFromString(String placeString)throws SearchFailedException{
     for(int i = 0; i < placesList.length; i++){
         if(placesList[i].getName().equals(placeString)){
             return placesList[i];
@@ -28,31 +28,29 @@ public static Place findPlaceFromString(String placeString)throws Exception{
          }
     System.out.println("\nError, place not found, returning places[0]");
     if(debug) System.out.println("placeString: " + placeString + "\n");
-    throw new Exception();
+    throw new SearchFailedException();
 }
   
-public static NPC findNPCFromString(NPC[] folks, String placeString){
-    int index = 0;
-    try{
-    while(!NPClist[index].getName().equalsIgnoreCase(placeString)){
-        index++;}
-    return folks[index];}
-    catch(Exception e)
-    {
-        System.out.println("hmm, that isn't a person, you seem to be talking to yourself.");
-        return folks[1];
-    }
+public static NPC findNPCFromString(String NPCname)throws SearchFailedException{
+    for(int i = 0; i < NPClist.length; i++){
+        if(NPClist[i].getName().equals(NPCname)){
+            return NPClist[i];
+            }
+         }
+    if(debug) System.out.println("\nError, NPC not found, returning places[0]");
+    if(debug) System.out.println("placeString: " + NPCname + "\n");
+    throw new SearchFailedException();
 }
 
-public static Thing findThingFromString(Thing[] things, String thingString){
-    
-    for(int i = 0; i < things.length; i++){
-        if(things[i].getName().equals(thingString)){
-            return things[i];}
+public static Thing findThingFromString(String thingName)throws SearchFailedException{
+    for(int i = 0; i < thingsList.length; i++){
+        if(thingsList[i].getName().equals(thingName)){
+            return thingsList[i];
+            }
          }
-    
- //   System.out.println("As far as I, This Method, am aware, that does not exist or is not here");
-    return things[0];
+    System.out.println("\nError, thing not found, returning thingsList[0]");
+    if(debug) System.out.println("placeString: " + thingName + "\n");
+    throw new SearchFailedException();
 }
   
 
