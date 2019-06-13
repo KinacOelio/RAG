@@ -39,7 +39,7 @@ if(debug)System.out.println("runningawaygame.RunningAwayGame.main() /PRIMARY LOO
             case "talk": com.talk(); break;
             case "get": com.get(); break;
             case "inv": com.list("inv"); break;
-            case "ex": com.ex(); break;
+            case "x": case "ex": case "examine": com.ex(); break;
             //debug coms
             case "$p": com.trueListPlaces(); break;
             case "$r": System.out.println(Player1.getPlace().region); break;

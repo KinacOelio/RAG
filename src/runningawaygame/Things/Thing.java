@@ -11,37 +11,29 @@ public class Thing {
     private int index;
     private String name = "default name";
     private Place location = placesList[0];
-    private String desc = "default description";
+    private String desc = "default description";d
     private ArrayList<Thing> required = new ArrayList<>();
     
     //flags
     public boolean isTransport = false;
-    public boolean usable = true;
     public boolean gettable = true;
     
-    
     public String getName(){
-        //boolean isUsable = true;
-        //for(Thing req : required){
-           // if(!Player1.inv.contains(req))
-              //  isUsable = false;        
-       // }
-        //isUsable = this.usable;
         return name;
     
     }
+    
     public Place getPlace(){return location;}
     public String getDesc(){return desc;}
     public int getIndex(){return index;}
     public Place getLoc() {return this.location;}
-    
     public void setLoc(Place place){this.location = place;}
     
     ///File format:
         //<thing>
         //name
         //location
-        //s<desc
+        //s<desc>
         //
     
     public Thing(String thingString, int index)throws Exception{
@@ -51,6 +43,13 @@ public class Thing {
          int b = thingString.substring(a).indexOf('\n');
          String thisName = thingString.substring(a+2, b+a).trim();     
          this.name = thisName;
+         //ITEM SPECIFIC CONSTRUCTORS 
+         switch(this.name){
+             case "car":     
+                 
+                 
+         }
+         
          
     }
 
@@ -65,6 +64,5 @@ public class Thing {
 }//end constructor
 //-------------
     
-
-    
+ 
 }

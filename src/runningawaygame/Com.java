@@ -38,7 +38,7 @@ public void go(){
      }
      //TODO: make this a real exception
      catch(Exception SearchFailedException){
-         System.err.println("Sorry, that method doesn't exist or isn't availabe!");
+         System.err.println("Sorry, that method doesn't exist!");
          return;
      }
          
